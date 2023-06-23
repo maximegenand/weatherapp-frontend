@@ -29,7 +29,7 @@ function listenDelete() {
         document.querySelector('#'+obj.id).addEventListener('click', () => {
             const cityName = document.querySelector('#'+obj.id).parentNode.querySelector('.name').textContent;
             // Fetch qui supprime la ville cityName
-            fetch('http://localhost:3000/weather/'+cityName, { method: 'DELETE' })
+            fetch('https://weatherapp-backend-five.vercel.app/weather/'+cityName, { method: 'DELETE' })
             .then(resRaw => resRaw.json())
             .then(data => {
                 // Si le delete est fait, on supprime le div parent
@@ -46,7 +46,7 @@ function listenDelete() {
 
 // Initialisation de l'affichage des villes au chargement de la page
 let initialCities = '';
-fetch('http://localhost:3000/weather')
+fetch('https://weatherapp-backend-five.vercel.app/weather')
 .then(resRaw => resRaw.json())
 .then(data => {
 	if (data.weather) {
@@ -63,7 +63,7 @@ fetch('http://localhost:3000/weather')
 // Listener - Add a new city
 document.querySelector('#addCity').addEventListener('click', function () {
 	const cityName = document.querySelector('#cityNameInput').value;
-	fetch('http://localhost:3000/weather', {
+	fetch('https://weatherapp-backend-five.vercel.app/weather', {
 		method: 'POST',
 		headers: { 'Content-Type': 'application/json' },
 		body: JSON.stringify({ cityName })
